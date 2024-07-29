@@ -101,8 +101,17 @@ SELECT * FROM cities;
 ## Block 5 - Authentication Middleware
 
 * Implement basic authentication middleware
-* Protect certain routes with authentication
+* Protect certain routes with authentication. For example, the `/stats` endpoint, which shows the list of cached cities.
 * Handle auth errors and responses
+
+After this, access to the `stats` endpoint should be protected. You can test it with:
+
+```bash
+curl -u forecast:forecast http://localhost:3000/stats
+```
+
+and by passing the wrong credentials.
+
 
 ## Block 6 - Frontend Integration
 

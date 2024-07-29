@@ -2171,6 +2171,7 @@ name = "weather"
 version = "0.1.0"
 dependencies = [
  "axum",
+ "base64 0.22.1",
  "reqwest",
  "serde",
  "sqlx",
