@@ -13,4 +13,5 @@ edition = "2021"
 axum = "0.7.5"
 reqwest = { version = "0.12.5", features = ["json"] }
 serde = { version = "1.0.204", features = ["derive"] }
+sqlx = { version = "0.8.0", features = ["runtime-tokio-rustls", "postgres"] }
 tokio = { version = "1.39.2", features = ["full"] }
