@@ -71,6 +71,27 @@ You should see something like `rustc 1.68.0 (2c8cc3432 2023-03-06)`.
 * Implement caching of weather data
 * Create database queries for inserting and retrieving data
 
+Some useful commands:
+
+```bash
+# Create a new database
+docker run -d -p 5432:5432 -e POSTGRES_USER=forecast -e POSTGRES_PASSWORD=forecast -e POSTGRES_DB=forecast -d postgres
+```
+
+```bash
+# Set up the database URL
+export DATABASE_URL="postgres://forecast:forecast@localhost:5432/forecast?sslmode=disable" 
+```
+
+```bash
+# Check DB contents
+docker exec -it <container_id> psql -U forecast forecast
+```
+
+```sql
+SELECT * FROM cities;
+```
+
 ## Block 4 - Error Handling
 
 * Create custom error types
