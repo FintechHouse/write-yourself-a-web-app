@@ -59,13 +59,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .route("/weather", get(weather))
         .with_state(Arc::new(pool));
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
-    println!("Server running on http://{}", addr);
-
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await?;
-    axum::serve(listener, app).await?;
-
-    Ok(())
+    println!("Server running on http://0.0.0.0:3000");
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
+    Ok(axum::serve(listener, app).await?)
 }
 
 async fn hello_world() -> &'static str {
