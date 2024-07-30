@@ -7,7 +7,6 @@ use axum::{
 };
 use serde::{Deserialize, Serialize};
 use sqlx::PgPool;
-use std::net::SocketAddr;
 use std::sync::Arc;
 
 // Custom error type
