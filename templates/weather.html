@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather for {{ city }}</title>
+    </head>
+    <body>
+        <h1>Weather for {{ city }}</h1>
+        <table border="1">
+            <tr>
+                <th>Time</th>
+                <th>Temperature (°C)</th>
+            </tr>
+            {% for (time, temp) in
+            weather.hourly.time.iter().zip(weather.hourly.temperature_2m.iter())
+            %}
+            <tr>
+                <td>{{ time }}</td>
+                <td>{{ temp }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/">Back to Home</a>
+    </body>
+</html>
