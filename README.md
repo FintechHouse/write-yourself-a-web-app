@@ -1,4 +1,4 @@
-# Write Yourself a Web App
+# Write Yourself a Web App in Rust
 
 ![Course banner](assets/banner.png)
 
