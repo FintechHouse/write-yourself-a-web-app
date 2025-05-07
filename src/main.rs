@@ -6,6 +6,9 @@ use axum::{
 
 use serde::{Deserialize, Serialize};
 
+use std::sync::{Arc, RwLock};
+use std::collections::HashMap;
+
 #[derive(Deserialize)]
 struct WeatherQuery {
     city: String,
@@ -40,10 +43,13 @@ struct Hourly {
 #[tokio::main]
 async fn main() {
     tracing_subscriber::fmt::init();
+    let lcache = Arc::new(RwLock::new(
+            HashMap<String, LatLong>::new()));
 
     let app = Router::new()
             .route("/", get(root))
             .route("/weather", get(weather));
+            .with_state(lcache);
 
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
     axum::serve(listener, app).await.unwrap();
